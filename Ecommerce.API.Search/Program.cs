@@ -14,11 +14,11 @@ builder.Services.AddHttpClient("OrderService", config => {
 });
 builder.Services.AddHttpClient("ProductsService", config => {
     config.BaseAddress = new Uri(builder.Configuration.GetValue<string>("Services:Products"));
-}).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
+}).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(1000)));
 
 builder.Services.AddHttpClient("CustomersService", config => {
     config.BaseAddress = new Uri(builder.Configuration.GetValue<string>("Services:Customers"));
-}).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(500)));
+}).AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(5, _ => TimeSpan.FromMilliseconds(1000)));
 builder.Services.AddControllers();
 
 builder.Services.AddControllers();
